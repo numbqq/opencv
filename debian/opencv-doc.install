@@ -1,0 +1,2 @@
+usr/share/doc/*                 usr/share/doc/opencv-doc/
+usr/share/opencv4/samples/*     usr/share/doc/opencv-doc/examples/

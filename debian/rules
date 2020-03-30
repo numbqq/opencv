@@ -1,0 +1,191 @@
+#!/usr/bin/make -f
+
+export DEB_BUILD_MAINT_OPTIONS=hardening=+all
+include /usr/share/dpkg/architecture.mk
+
+BUILDDIR = obj-$(DEB_HOST_MULTIARCH)
+
+CMAKE_ARCH_FLAGS :=
+
+# Comply with Debian architectures baseline.
+# See cmake/OpenCVCompilerOptimizations.cmake for a list of known features.
+# Reference: https://github.com/opencv/opencv/wiki/CPU-optimizations-build-options
+ifeq ($(DEB_HOST_ARCH_CPU),amd64)
+ # Only SSE2 on amd64
+ CMAKE_ARCH_FLAGS += -DCPU_BASELINE="SSE2"
+ CMAKE_ARCH_FLAGS += -DCPU_BASELINE_DISABLE="SSE3"
+else ifeq ($(DEB_HOST_ARCH_CPU),armhf)
+ CMAKE_ARCH_FLAGS += -DCPU_BASELINE_DISABLE="VFPV3,NEON"
+ CMAKE_ARCH_FLAGS += -DCPU_DISPATCH="VFPV3,NEON"
+else ifeq ($(DEB_HOST_ARCH_CPU),i386)
+ # Be extra sure SSE is not picked up on i386
+ CMAKE_ARCH_FLAGS += -DCPU_BASELINE_DISABLE="SSE,SSE2"
+else ifeq ($(DEB_HOST_ARCH_CPU),ppc64el)
+ # VSX for Power8, VSX3 for Power9
+ CMAKE_ARCH_FLAGS += -DCPU_BASELINE="VSX"
+ CMAKE_ARCH_FLAGS += -DCPU_DISPATCH="VSX3"
+endif
+
+# TBB support
+ifneq (,$(findstring $(DEB_HOST_ARCH), amd64 arm64 armel armhf i386 mips mips64el mipsel ppc64el s390x powerpc powerpcspe riscv64 ppc64 sh4 sparc64))
+CMAKE_ARCH_FLAGS += -DWITH_TBB=ON
+else
+CMAKE_ARCH_FLAGS += -DWITH_TBB=OFF
+endif
+
+# Linux-specific stuff
+ifeq ($(DEB_HOST_ARCH_OS),linux)
+CMAKE_ARCH_FLAGS += -DWITH_1394=ON -DWITH_V4L=ON
+else
+CMAKE_ARCH_FLAGS += -DWITH_1394=OFF -DWITH_V4L=OFF
+endif
+
+# Java support
+ifeq (,$(findstring $(DEB_HOST_ARCH), hppa hurd-i386 kfreebsd-i386 kfreebsd-amd64))
+CMAKE_ARCH_FLAGS += -DBUILD_JAVA=ON
+endif
+
+# mitigate compiler OOM during build
+ifeq ($(DEB_HOST_ARCH),mipsel)
+export DEB_BUILD_OPTIONS=noopt
+CXXFLAGS+=-gsplit-dwarf
+endif
+
+# For Java
+export JAVA_HOME=/usr/lib/jvm/default-java
+
+CMAKE_FLAGS = \
+	-GNinja \
+	-DANT_EXECUTABLE=/usr/bin/ant \
+	-DBUILD_EXAMPLES=OFF \
+	-DBUILD_PROTOBUF=OFF \
+	-DBUILD_PERF_TESTS=OFF \
+	-DBUILD_opencv_dnn=ON \
+	-DBUILD_opencv_dnn_modern=ON \
+	-DBUILD_opencv_face=ON \
+	-DCMAKE_BUILD_TYPE=Release	\
+	-DCMAKE_CXX_FLAGS_RELEASE="$(CXXFLAGS)" \
+	-DCMAKE_C_FLAGS_RELEASE="$(CFLAGS)" \
+	-DCMAKE_EXE_LINKER_FLAGS_RELEASE="$(LDFLAGS)" \
+	-DCMAKE_INSTALL_LIBDIR="lib/$(DEB_HOST_MULTIARCH)" \
+	-DCMAKE_INSTALL_PREFIX=/usr \
+	-DCMAKE_SKIP_RPATH=ON \
+	-DCMAKE_VERBOSE_MAKEFILE=ON \
+	-DENABLE_PRECOMPILED_HEADERS=OFF \
+	-DINSTALL_C_EXAMPLES=ON	\
+	-DINSTALL_PYTHON_EXAMPLES=ON \
+	-DOPENCL_INCLUDE_DIR:PATH="/usr/include/CL/" \
+	-DOPENCV_EXTRA_MODULES_PATH="$(CURDIR)/contrib/modules" \
+	-DOPENCV_MATHJAX_RELPATH=/usr/share/javascript/mathjax/ \
+	-DOPENCV_SKIP_PYTHON_LOADER=ON \
+	-DOPENCV_GENERATE_PKGCONFIG=ON \
+	-DOPENCV_LAPACK_FIND_PACKAGE_ONLY=ON \
+	-DOpenGL_GL_PREFERENCE=GLVND \
+	-DPROTOBUF_UPDATE_FILES=ON \
+	-DWITH_ADE=OFF \
+	-DWITH_CAROTENE=OFF \
+	-DWITH_CUDA=OFF \
+	-DWITH_EIGEN=ON \
+	-DWITH_FFMPEG=ON \
+	-DWITH_GDAL=ON \
+	-DWITH_GDCM=ON \
+	-DWITH_GSTREAMER=ON \
+	-DWITH_GTK=ON \
+	-DWITH_IPP=OFF \
+	-DWITH_ITT=OFF \
+	-DWITH_JASPER=OFF \
+	-DWITH_JPEG=ON	\
+	-DWITH_LAPACK=ON \
+	-DWITH_NGRAPH=OFF \
+	-DWITH_OPENCL=ON \
+	-DWITH_OPENEXR=ON \
+	-DWITH_OPENGL=ON \
+	-DWITH_PNG=ON	\
+	-DWITH_PROTOBUF=ON \
+	-DWITH_PVAPI=ON	\
+	-DWITH_QT=OFF \
+	-DWITH_QUIRC=OFF \
+	-DWITH_TIFF=ON	\
+	-DWITH_UNICAP=OFF \
+	-DWITH_VTK=ON \
+	-DWITH_XINE=OFF	\
+	$(CMAKE_ARCH_FLAGS)
+
+%:
+ifeq (,$(findstring $(DEB_HOST_ARCH), hppa hurd-i386 kfreebsd-i386 kfreebsd-amd64))
+	dh $@ --with python3,javahelper,jh_maven_repo_helper
+else
+	dh $@ --with python3
+endif
+
+override_dh_clean:
+	rm -rvf modules/python/src2/hdr_parser.pyc
+	rm -rvf modules/java/generator/rst_parser.pyc
+	rm -rvf modules/refman.rst
+
+	dh_clean
+	-rm -rvf modules/python/src2/__pycache__
+
+override_dh_auto_clean:
+	dh_auto_clean -B $(BUILDDIR)
+	dh_auto_clean -B $(BUILDDIR)-static
+
+
+override_dh_auto_configure:
+	# dynamicly linked
+	dh_auto_configure -B $(BUILDDIR) \
+		-- $(CMAKE_FLAGS) \
+		-DCMAKE_SHARED_LINKER_FLAGS_RELEASE="$(LDFLAGS)" \
+		-DBUILD_SHARED_LIBS=ON -DBUILD_DOCS=ON \
+		-DBUILD_TESTS=OFF
+	# statically linked
+	dh_auto_configure -B $(BUILDDIR)-static \
+		-- $(CMAKE_FLAGS) \
+		-DBUILD_SHARED_LIBS=OFF -DBUILD_DOCS=OFF \
+		-DBUILD_TESTS=ON
+
+override_dh_auto_build:
+	# documentation
+	dh_auto_build -B $(BUILDDIR) -- doxygen
+ifneq (,$(findstring $(DEB_HOST_ARCH), mipsel))
+	# dynamically linked
+	dh_auto_build --no-parallel -B $(BUILDDIR)
+	# statically linked
+	dh_auto_build --no-parallel -B $(BUILDDIR)-static
+else
+	# dynamically linked
+	dh_auto_build -B $(BUILDDIR)
+	# statically linked
+	dh_auto_build -B $(BUILDDIR)-static
+endif
+
+override_dh_auto_test:
+ifeq ($(DEB_HOST_ARCH),mipsel)
+	true # Don't run the tests at all
+else
+	-LD_LIBRARY_PATH=$(shell realpath $(BUILDDIR))/lib dh_auto_test
+endif
+
+ifeq ($(DEB_HOST_ARCH),mipsel)
+override_dh_dwz:
+	true # mipsel would FTBFS, possibly due to out-of-memory
+endif
+
+override_dh_auto_install:
+	dh_auto_install -B $(BUILDDIR)
+
+override_dh_install:
+	# put the static libs together with the rest of the stuff
+	cp -v $(BUILDDIR)-static/lib/*.a debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/
+	-find debian/tmp -type f -name jquery.js -delete
+	-find debian/tmp -type f -name '*.supp' -delete
+	-find debian/tmp -type d -empty -delete
+	-$(RM) -r $(BUILDDIR)-static
+	dh_install
+
+override_dh_missing:
+	dh_missing --fail-missing
+
+override_dh_gencontrol:
+	dh_numpy3 -p python3-opencv
+	dh_gencontrol

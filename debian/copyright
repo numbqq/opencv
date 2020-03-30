@@ -1,0 +1,156 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0
+Upstream-Name: OpenCV
+Source: https://opencv.org
+Files-Excluded:
+ 3rdparty
+ doc/js_tutorials/js_assets/lena.jpg
+ doc/js_tutorials/js_assets/lenaFace.png
+ doc/tutorials/dnn/images/lena_hed.jpg
+ doc/tutorials/introduction/clojure_dev_intro/images/lena.png
+ doc/tutorials/introduction/desktop_java/images/lena.png
+ doc/tutorials/introduction/images/lena.png
+ modules/highgui/src/files_Qt/Milky
+ modules/java/test/common_test/res/drawable/lena.png
+ samples/data/lena.jpg
+ samples/data/lena_tmpl.jpg
+ samples/java/clojure/simple-sample/resources
+ samples/java/clojure/simple-sample/resources/images
+ samples/java/clojure/simple-sample/resources/images/lena.png
+ samples/winrt/OcvImageProcessing/OcvImageProcessing/Assets/Lena.png
+ samples/winrt_universal/PhoneTutorial/Lena.png
+ samples/wp8/OcvRotatingCube/PhoneXamlDirect3DApp1/PhoneXamlDirect3DApp1/Assets/Lena.png
+ samples/wp8/OpenCVXaml/OpenCVXaml/Assets/Lena.png
+Files-Excluded-contrib:
+ modules/xfeatures2d
+
+Files: *
+Copyright: 2000-2015 Intel Corporation
+           2009-2011 Willow Garage Inc.
+           2009-2015 NVIDIA Corporation
+           2010-2013 Advanced Micro Devices, Inc.
+           2015      OpenCV Foundation
+           2015      Itseez Inc.
+License: BSD-3-clause
+Comment: Some of the source files contain different third clauses, for instance:
+ .
+   * The name of Intel Corporation may not be used to endorse or promote products
+     derived from this software without specific prior written permission.
+ .
+   * The name of the copyright holders may not be used to endorse or promote products
+     derived from this software without specific prior written permission.
+ .
+   * Neither the name of Willow Garage, Inc. nor the names of its
+     contributors may be used to endorse or promote products derived
+     from this software without specific prior written permission.
+ .
+   * Neither the name of Google Inc. nor the names of its contributors may be
+     used to endorse or promote products derived from this software without
+     specific prior written permission.
+ .
+   * The name of OpenCV Foundation may not be used to endorse or promote products
+     derived from this software without specific prior written permission.
+
+Files: cmake/FindCUDA/*
+Copyright: 2008 - 2009 NVIDIA Corporation.
+           2007-2009 Scientific Computing and Imaging Institute, University of Utah
+License: Expat
+
+Files: modules/dnn/src/onnx/opencv-onnx.proto
+Copyright: 2018 Facebook Inc. and Microsoft Corporation
+License: Expat
+
+Files: modules/dnn/src/caffe/opencv-caffe.proto
+Copyright: 2014, The Regents of the University of California
+           2014, Caffe Contributors
+License: BSD-2-Clause
+
+Files: modules/dnn/src/opencl/lrn.cl
+       modules/dnn/src/opencl/pooling.cl
+       modules/dnn/src/opencl/softmax.cl
+Copyright: 2015, Advanced Micro Devices, Inc.
+License: BSD-2-Clause
+
+Files: modules/dnn/src/torch/*
+Copyright:2011-2014 Idiap Research Institute (Ronan Collobert)
+          2012-2014 Deepmind Technologies (Koray Kavukcuoglu)
+          2011-2012 NEC Laboratories America (Koray Kavukcuoglu)
+          2011-2013 NYU (Clement Farabet)
+          2006-2010 NEC Laboratories America (Ronan Collobert, Leon Bottou, Iain Melvin, Jason Weston)
+          2006      Idiap Research Institute (Samy Bengio)
+          2001-2004 Idiap Research Institute (Ronan Collobert, Samy Bengio, Johnny Mariethoz)
+          2013,     OpenCV Foundation
+License: BSD-3-Clause
+
+Files: debian/*
+Copyright: 2004-2008 Sam Hocevar <sam@zoy.org>
+           2009-2017 Nobuhiro Iwamatsu <iwamatsu@debian.org>
+           2016-2017 Mattia Rizzolo <mattia@debian.org>
+           2018-2019 Mo Zhou <cdluminate@gmail.com>
+           2018-2020 Mo Zhou <lumin@debian.org>
+License: BSD-3-clause
+
+License: BSD-3-clause
+ Redistribution and use in source and binary forms, with or without modification,
+ are permitted provided that the following conditions are met:
+ .
+   * Redistribution's [sic] of source code must retain the above copyright notice,
+     this list of conditions and the following disclaimer.
+ .
+   * Redistribution's [sic] in binary form must reproduce the above copyright notice,
+     this list of conditions and the following disclaimer in the documentation
+     and/or other materials provided with the distribution.
+ .
+   * The name of the copyright holders may not be used to endorse or promote products
+     derived from this software without specific prior written permission.
+ .
+ This software is provided by the copyright holders and contributors "as is" and
+ any express or implied warranties, including, but not limited to, the implied
+ warranties of merchantability and fitness for a particular purpose are disclaimed.
+ In no event shall the Intel Corporation or contributors be liable for any direct,
+ indirect, incidental, special, exemplary, or consequential damages
+ (including, but not limited to, procurement of substitute goods or services;
+ loss of use, data, or profits; or business interruption) however caused
+ and on any theory of liability, whether in contract, strict liability,
+ or tort (including negligence or otherwise) arising in any way out of
+ the use of this software, even if advised of the possibility of such damage.
+
+License: Expat
+ Permission is hereby granted, free of charge, to any person obtaining a
+ copy of this software and associated documentation files (the "Software"),
+ to deal in the Software without restriction, including without limitation
+ the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ and/or sell copies of the Software, and to permit persons to whom the
+ Software is furnished to do so, subject to the following conditions:
+ .
+ The above copyright notice and this permission notice shall be included
+ in all copies or substantial portions of the Software.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+ OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+ IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+ CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, 
+ TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE 
+ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+License: BSD-2-Clause
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT 
+ LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR 
+ A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE HOLDERS OR
+ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, 
+ EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, 
+ PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
+ PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF 
+ LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING 
+ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS 
+ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.

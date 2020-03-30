@@ -1,0 +1,144 @@
+# aruco
+usr/include/opencv4/opencv2/aruco/*
+usr/include/opencv4/opencv2/aruco.hpp
+usr/lib/*/libopencv_aruco.a
+usr/lib/*/libopencv_aruco.so
+# bgsegm
+# usr/include/opencv4/opencv2/bgsegm/*
+usr/include/opencv4/opencv2/bgsegm.hpp
+usr/lib/*/libopencv_bgsegm.a
+usr/lib/*/libopencv_bgsegm.so
+# bioinspired
+usr/include/opencv4/opencv2/bioinspired/*
+usr/include/opencv4/opencv2/bioinspired.hpp
+usr/lib/*/libopencv_bioinspired.a
+usr/lib/*/libopencv_bioinspired.so
+# ccalib
+usr/include/opencv4/opencv2/ccalib/*
+usr/include/opencv4/opencv2/ccalib.hpp
+usr/lib/*/libopencv_ccalib.a
+usr/lib/*/libopencv_ccalib.so
+# dpm
+usr/include/opencv4/opencv2/dpm.hpp
+usr/lib/*/libopencv_dpm.a
+usr/lib/*/libopencv_dpm.so
+# fuzzy
+usr/include/opencv4/opencv2/fuzzy/*
+usr/include/opencv4/opencv2/fuzzy.hpp
+usr/lib/*/libopencv_fuzzy.a
+usr/lib/*/libopencv_fuzzy.so
+# hdf
+usr/include/opencv4/opencv2/hdf/*
+usr/include/opencv4/opencv2/hdf.hpp
+usr/lib/*/libopencv_hdf.a
+usr/lib/*/libopencv_hdf.so
+# hfs
+usr/include/opencv4/opencv2/hfs.hpp
+usr/lib/*/libopencv_hfs.a
+usr/lib/*/libopencv_hfs.so
+# line_descriptor
+usr/include/opencv4/opencv2/line_descriptor/*
+usr/include/opencv4/opencv2/line_descriptor.hpp
+usr/lib/*/libopencv_line_descriptor.a
+usr/lib/*/libopencv_line_descriptor.so
+# optflow
+usr/include/opencv4/opencv2/optflow/*
+usr/include/opencv4/opencv2/optflow.hpp
+usr/lib/*/libopencv_optflow.a
+usr/lib/*/libopencv_optflow.so
+# plot
+# usr/include/opencv4/opencv2/plot/*
+usr/include/opencv4/opencv2/plot.hpp
+usr/lib/*/libopencv_plot.a
+usr/lib/*/libopencv_plot.so
+# reg
+usr/include/opencv4/opencv2/reg/*
+# usr/include/opencv4/opencv2/reg.hpp
+usr/lib/*/libopencv_reg.a
+usr/lib/*/libopencv_reg.so
+# saliency
+usr/include/opencv4/opencv2/saliency/*
+usr/include/opencv4/opencv2/saliency.hpp
+usr/lib/*/libopencv_saliency.a
+usr/lib/*/libopencv_saliency.so
+# stereo
+usr/include/opencv4/opencv2/stereo/*
+usr/include/opencv4/opencv2/stereo.hpp
+usr/lib/*/libopencv_stereo.a
+usr/lib/*/libopencv_stereo.so
+# surface_matching
+usr/include/opencv4/opencv2/surface_matching/*
+usr/include/opencv4/opencv2/surface_matching.hpp
+usr/lib/*/libopencv_surface_matching.a
+usr/lib/*/libopencv_surface_matching.so
+# structred_light
+usr/include/opencv4/opencv2/structured_light/*
+usr/include/opencv4/opencv2/structured_light.hpp
+usr/lib/*/libopencv_structured_light.a
+usr/lib/*/libopencv_structured_light.so
+# rgbd
+usr/include/opencv4/opencv2/rgbd/*
+usr/include/opencv4/opencv2/rgbd.hpp
+usr/lib/*/libopencv_rgbd.a
+usr/lib/*/libopencv_rgbd.so
+# datasets
+usr/include/opencv4/opencv2/datasets/*
+#usr/include/opencv4/opencv2/datasets.hpp
+usr/lib/*/libopencv_datasets.a
+usr/lib/*/libopencv_datasets.so
+# text
+usr/include/opencv4/opencv2/text/*
+usr/include/opencv4/opencv2/text.hpp
+usr/lib/*/libopencv_text.a
+usr/lib/*/libopencv_text.so
+# face
+usr/include/opencv4/opencv2/face/*
+usr/include/opencv4/opencv2/face.hpp
+usr/lib/*/libopencv_face.a
+usr/lib/*/libopencv_face.so
+# freetype
+usr/include/opencv4/opencv2/freetype.hpp
+usr/lib/*/libopencv_freetype.a
+usr/lib/*/libopencv_freetype.so
+# ximgproc
+usr/include/opencv4/opencv2/ximgproc/*
+usr/include/opencv4/opencv2/ximgproc.hpp
+usr/lib/*/libopencv_ximgproc.a
+usr/lib/*/libopencv_ximgproc.so
+# xobjdetect
+usr/include/opencv4/opencv2/xobjdetect.hpp
+usr/lib/*/libopencv_xobjdetect.a
+usr/lib/*/libopencv_xobjdetect.so
+# xphoto
+usr/include/opencv4/opencv2/xphoto/*
+usr/include/opencv4/opencv2/xphoto.hpp
+usr/lib/*/libopencv_xphoto.a
+usr/lib/*/libopencv_xphoto.so
+# phase_unwrapping
+usr/include/opencv4/opencv2/phase_unwrapping/*
+usr/include/opencv4/opencv2/phase_unwrapping.hpp
+usr/lib/*/libopencv_phase_unwrapping.a
+usr/lib/*/libopencv_phase_unwrapping.so
+# img_hash
+usr/include/opencv4/opencv2/img_hash/*
+usr/include/opencv4/opencv2/img_hash.hpp
+usr/lib/*/libopencv_img_hash.a
+usr/lib/*/libopencv_img_hash.so
+# tracking
+usr/include/opencv4/opencv2/tracking/*
+usr/include/opencv4/opencv2/tracking.hpp
+usr/lib/*/libopencv_tracking.a
+usr/lib/*/libopencv_tracking.so
+# dnn_objdetect
+usr/include/opencv4/opencv2/core_detect.hpp
+usr/lib/*/libopencv_dnn_objdetect.so
+usr/lib/*/libopencv_dnn_objdetect.a
+# quality
+usr/include/opencv4/opencv2/quality.hpp
+usr/include/opencv4/opencv2/quality/*
+usr/lib/*/libopencv_quality.a
+usr/lib/*/libopencv_quality.so
+# dnn_superres
+usr/include/opencv4/opencv2/dnn_superres.hpp 
+usr/lib/*/libopencv_dnn_superres.a
+usr/lib/*/libopencv_dnn_superres.so

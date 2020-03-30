@@ -1,0 +1,4 @@
+change_jquery.js_path
+face-no-download.patch
+cmake-dont-install-inexistent-files.patch
+cmake-revert-openexr.patch

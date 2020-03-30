@@ -1,0 +1,26 @@
+From 2159fa1b456891510ada38a48e09ad1acec65786 Mon Sep 17 00:00:00 2001
+From: Nobuhiro Iwamatsu <iwamatsu@debian.org>
+Date: Sat, 4 Aug 2018 09:28:35 +0900
+Subject: [PATCH 2/2] use system-installed jquery
+
+Signed-off-by: Nobuhiro Iwamatsu <iwamatsu@debian.org>
+---
+ doc/header.html | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/doc/header.html b/doc/header.html
+index 69e8c0df1..946e083b7 100644
+--- a/doc/header.html
++++ b/doc/header.html
+@@ -9,7 +9,7 @@
+ <!--BEGIN !PROJECT_NAME--><title>$title</title><!--END !PROJECT_NAME-->
+ <link href="$relpath^opencv.ico" rel="shortcut icon" type="image/x-icon" />
+ <link href="$relpath^tabs.css" rel="stylesheet" type="text/css"/>
+-<script type="text/javascript" src="$relpath^jquery.js"></script>
++<script type="text/javascript" src="/usr/share/javascript/jquery/jquery.js"></script>
+ <script type="text/javascript" src="$relpath^dynsections.js"></script>
+ <script type="text/javascript" src="$relpath^tutorial-utils.js"></script>
+ $treeview
+-- 
+2.18.0
+

@@ -1,0 +1,12 @@
+# samples
+usr/bin/opencv_annotation
+usr/bin/opencv_interactive-calibration
+usr/bin/opencv_version
+usr/bin/opencv_visualisation
+usr/bin/opencv_waldboost_detector
+# cmake
+usr/lib/*/cmake/opencv4/*.cmake
+# pkg-config
+usr/lib/*/pkgconfig/opencv4.pc
+# misc
+usr/share/licenses/opencv4/SoftFloat-COPYING.txt

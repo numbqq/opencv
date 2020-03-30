@@ -1,0 +1,6 @@
+libopencv-dev: binary-without-manpage usr/bin/opencv_annotation
+libopencv-dev: binary-without-manpage usr/bin/opencv_interactive-calibration
+libopencv-dev: binary-without-manpage usr/bin/opencv_version
+libopencv-dev: binary-without-manpage usr/bin/opencv_visualisation
+libopencv-dev: binary-without-manpage usr/bin/opencv_waldboost_detector
+libopencv-dev: pkg-config-references-unknown-shared-library

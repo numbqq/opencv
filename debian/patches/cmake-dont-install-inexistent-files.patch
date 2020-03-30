@@ -1,0 +1,12 @@
+diff --git a/cmake/OpenCVDetectOpenCL.cmake b/cmake/OpenCVDetectOpenCL.cmake
+index 6cd7552fa..7a05cbb9f 100644
+--- a/cmake/OpenCVDetectOpenCL.cmake
++++ b/cmake/OpenCVDetectOpenCL.cmake
+@@ -5,7 +5,6 @@ if(APPLE)
+ else()
+   set(OPENCL_LIBRARY "" CACHE STRING "OpenCL library")
+   set(OPENCL_INCLUDE_DIR "${OpenCV_SOURCE_DIR}/3rdparty/include/opencl/1.2" CACHE PATH "OpenCL include directory")
+-  ocv_install_3rdparty_licenses(opencl-headers "${OpenCV_SOURCE_DIR}/3rdparty/include/opencl/LICENSE.txt")
+ endif()
+ mark_as_advanced(OPENCL_INCLUDE_DIR OPENCL_LIBRARY)
+ 

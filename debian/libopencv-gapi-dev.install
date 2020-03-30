@@ -1,0 +1,4 @@
+usr/include/opencv4/opencv2/gapi.hpp
+usr/include/opencv4/opencv2/gapi/*
+usr/lib/*/libopencv_gapi.a
+usr/lib/*/libopencv_gapi.so

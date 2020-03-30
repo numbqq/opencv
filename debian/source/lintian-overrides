@@ -1,0 +1,2 @@
+debian-rules-sets-DEB_BUILD_OPTIONS
+intra-source-package-circular-dependency libopencv-contrib4.2 libopencv-superres4.2

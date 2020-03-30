@@ -1,0 +1,4 @@
+usr/include/opencv4/opencv2/dnn.hpp
+usr/include/opencv4/opencv2/dnn/*
+usr/lib/*/libopencv_dnn.a
+usr/lib/*/libopencv_dnn.so
